@@ -12,11 +12,11 @@ class DoctorController extends Controller
 {
 
 	private function getFieldsAndValuesString(){
-		// $fields = Input::except('_token');
-		$fields = json_decode(file_get_contents('php://input'), true);
-		if (isset($fields['_token'])) {
-			unset($fields['_token']);
-		}
+		$fields = Input::except('_token');
+		// $fields = json_decode(file_get_contents('php://input'), true);
+		// if (isset($fields['_token'])) {
+		// 	unset($fields['_token']);
+		// }
 		$fieldsString = '';
 		$valuesString = '';
 		foreach ($fields as $key => $value) {
@@ -51,11 +51,11 @@ class DoctorController extends Controller
 			return "ID richiesto";
 
 		if (Request::isMethod('post')) {
-			// $fields = Input::except('_token');
-			$fields = json_decode(file_get_contents('php://input'), true);
-			if (isset($fields['_token'])) {
-				unset($fields['_token']);
-			}
+			$fields = Input::except('_token');
+			// $fields = json_decode(file_get_contents('php://input'), true);
+			// if (isset($fields['_token'])) {
+			// 	unset($fields['_token']);
+			// }
 			$fields['id'] = $id;
 			$values = '';
 			foreach ($fields as $key => $value) {
